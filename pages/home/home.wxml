@@ -1,0 +1,29 @@
+<!--pages/home/home.wxml-->
+<camera flash="off" style="width: 100%; height: {{wh}}px;" 	device-position="{{position}}" wx:if="{{isShowPic === false}}">
+  <cover-view class="btn-box">
+  <!-- 切换摄像头 -->
+    <cover-image src="/images/xiangji.png" bindtap="reverseCamera"></cover-image>
+    <!-- 拍照 -->
+    <cover-image src="/images/paizhao.png" bindtap="takePhoto"></cover-image>
+    <!-- 从本地选取图片 -->
+    <cover-image src="/images/tupian.png" bindtap="choosePhoto"></cover-image>
+  </cover-view>
+</camera>
+<view wx:else>
+<image src="{{src}}" style="width: 100%;height: {{wh}}px;" mode="aspectFill"></image>
+<button type="warn" class="reChoose" bindtap="reChoose">重新选择</button>
+</view>
+<view class='faceinfo_box' wx:if="{{isShowBox}}">
+    <view class='face_row'>
+      <text>年龄：{{faceInfo.age}}岁</text>
+      <text>性别：{{map.gender[faceInfo.gender.type]}}</text>
+    </view>
+    <view class='face_row'>
+      <text>颜值：{{faceInfo.beauty}}分</text>
+      <text>表情：{{map.expression[faceInfo.expression.type]}}</text>
+    </view>
+    <view class='face_row'>
+      <text>眼镜：{{map.glasses[faceInfo.glasses.type]}}</text>
+      <text>情绪：{{map.emotion[faceInfo.emotion.type]}}</text>
+    </view>
+</view>
